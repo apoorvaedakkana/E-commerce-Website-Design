@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyShop - Home</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Slider -->
+  <section class="slider">
+    <div class="slides">
+      <div class="slide active">
+        <img src="assets/images/slider1.jpg" alt="Sale Banner">
+        <div class="caption">
+          <h2>Biggest Sale of the Season</h2>
+          <p>Up to 50% Off</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/slider2.jpg" alt="New Arrivals">
+        <div class="caption">
+          <h2>New Arrivals</h2>
+          <p>Latest Fashion & Electronics</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/slider3.jpg" alt="Trending Deals">
+        <div class="caption">
+          <h2>Trending Deals</h2>
+          <p>Don’t Miss Out</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Category -->
+  <section class="category">
+    <div class="container">
+      <h1>Shop by Category</h1>
+      <div class="category-grid">
+        <div class="category-card">
+          <img src="assets/images/category1.jpg" alt="Electronics">
+          <h3>Electronics</h3>
+        </div>
+        <div class="category-card">
+          <img src="assets/images/category2.jpg" alt="Fashion">
+          <h3>Fashion</h3>
+        </div>
+        <div class="category-card">
+          <img src="assets/images/category3.jpg" alt="Home Appliances">
+          <h3>Home Appliances</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Products -->
+  <section class="latest-products">
+    <div class="container">
+      <h1>Latest Products</h1>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="assets/images/product1.jpg" alt="Smartphone">
+          <h3>Smartphone</h3>
+          <p>$499</p>
+          <a href="product_detail.html" class="btn">View Details</a>
+        </div>
+        <div class="product-card">
+          <img src="assets/images/product2.jpg" alt="Shoes">
+          <h3>Running Shoes</h3>
+          <p>$89</p>
+          <a href="product_detail.html" class="btn">View Details</a>
+        </div>
+        <div class="product-card">
+          <img src="assets/images/product3.jpg" alt="Microwave">
+          <h3>Microwave Oven</h3>
+          <p>$150</p>
+          <a href="product_detail.html" class="btn">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <h2>Why Shop With Us?</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>🚚 Fast Delivery</h3>
+          <p>Quick and reliable shipping at your doorstep.</p>
+        </div>
+        <div class="feature">
+          <h3>🔒 Secure Payment</h3>
+          <p>Multiple secure payment methods available.</p>
+        </div>
+        <div class="feature">
+          <h3>⭐ Quality Products</h3>
+          <p>Curated products for the best shopping experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button onclick="topFunction()" id="scrollBtn">↑</button>
+
+  <script src="assets/js/form.js"></script>
+  <script>
+    // Scroll to Top
+    let scrollBtn = document.getElementById("scrollBtn");
+    window.onscroll = () => {
+      scrollBtn.style.display = (document.documentElement.scrollTop > 20) ? "block" : "none";
+    };
+    function topFunction() { document.documentElement.scrollTop = 0; }
+
+    // Simple Slider
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 4000);
+  </script>
+</body>
+</html>

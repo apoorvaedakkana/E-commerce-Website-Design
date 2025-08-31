@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - MyShop</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="checkout.html">Cart</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="search">
+    <div class="container">
+      <h1>Search Products</h1>
+      <form class="search-bar">
+        <input type="text" placeholder="Search for products...">
+        <button type="submit" class="btn">Search</button>
+      </form>
+
+      <div class="search-results">
+        <div class="product-card">
+          <img src="assets/images/product1.jpg" alt="Smartphone">
+          <h3>Smartphone XYZ</h3><p>$499</p>
+          <a href="product_detail.html" class="btn">View Details</a>
+        </div>
+        <div class="product-card">
+          <img src="assets/images/product2.jpg" alt="Shoes">
+          <h3>Running Shoes</h3><p>$89</p>
+          <a href="product_detail.html" class="btn">View Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
+  <button onclick="topFunction()" id="scrollBtn">↑</button>
+  <script src="assets/js/form.js"></script>
+</body>
+</html>
