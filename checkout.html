@@ -1,66 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - MyShop</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - MyShop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="checkout.html" class="active">Cart</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"><h1>PixelCart</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li>
+                    <a href="checkout.html" class="active">Cart</a>
+                    <span id="cart-item-count" class="cart-count">0</span>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="checkout">
-    <div class="container">
-      <h1>Checkout</h1>
-      <div class="checkout-grid">
-        
-        <!-- Order Summary -->
-        <div class="order-summary">
-          <h2>Order Summary</h2>
-          <ul>
-            <li>Product 1 <span>$50</span></li>
-            <li>Product 2 <span>$30</span></li>
-            <li>Shipping <span>$5</span></li>
-            <li><strong>Total</strong> <span>$85</span></li>
-          </ul>
+    <section class="checkout-page">
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+            <div class="checkout-layout">
+                <div class="cart-items" id="cart-items-container">
+                    </div>
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-details">
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="cart-total">$0.00</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>Shipping</span>
+                            <span>$0.00</span>
+                        </div>
+                        <div class="summary-line total-line">
+                            <h3>Total</h3>
+                            <h3 id="final-total">$0.00</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shipping-info-container">
+                <h2>Shipping Information</h2>
+                <form id="shipping-form">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                    
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" required>
+
+                    <label for="zipCode">Zip Code</label>
+                    <input type="text" id="zipCode" name="zipCode" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <button type="submit" class="btn checkout-btn">Proceed to Checkout</button>
+                </form>
+            </div>
         </div>
+    </section>
 
-        <!-- Shipping Info -->
-        <div class="shipping-info">
-          <h2>Shipping Information</h2>
-          <form>
-            <label>Full Name</label>
-            <input type="text" required>
-            <label>Email</label>
-            <input type="email" required>
-            <label>Phone</label>
-            <input type="tel" required>
-            <label>Address</label>
-            <textarea required></textarea>
-            <label>City</label>
-            <input type="text" required>
-            <label>Postal Code</label>
-            <input type="text" required>
-            <button type="submit" class="btn">Place Order</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
+    <button onclick="topFunction()" id="scrollBtn">↑</button>
 
-  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
-  <button onclick="topFunction()" id="scrollBtn">↑</button>
-  <script src="assets/js/form.js"></script>
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

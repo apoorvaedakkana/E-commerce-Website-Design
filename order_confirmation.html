@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Confirmation - MyShop</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - MyShop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="checkout.html">Cart</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"><h1>PixelCart</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li>
+                    <a href="checkout.html">Cart</a>
+                    <span id="cart-item-count" class="cart-count">0</span>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="order-confirmation">
-    <div class="container">
-      <h1>Thank You for Your Order!</h1>
-      <p>Your order has been successfully placed.</p>
-      <div class="order-details">
-        <h2>Order Details</h2>
-        <p><strong>Order Number:</strong> #ORD12345</p>
-        <p><strong>Status:</strong> Confirmed</p>
-        <p><strong>Estimated Delivery:</strong> 5-7 Business Days</p>
-      </div>
-      <a href="index.html" class="btn">Continue Shopping</a>
-    </div>
-  </section>
+    <section class="order-confirmation-page">
+        <div class="container">
+            <h1>Order Confirmed!</h1>
+            <p>Thank you for your purchase.</p>
+            <div class="confirmation-details">
+                <p><strong>Order Number:</strong> <span id="order-number">#123456789</span></p>
+                <p><strong>Status:</strong> <span id="order-status">Processing</span></p>
+                <p>You will receive an email confirmation shortly with your order details.</p>
+            </div>
+            <a href="index.html" class="btn">Return to Home Page</a>
+        </div>
+    </section>
 
-  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
-  <button onclick="topFunction()" id="scrollBtn">↑</button>
-  <script src="assets/js/form.js"></script>
+    <footer>
+        <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
+    <button onclick="topFunction()" id="scrollBtn">↑</button>
+
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

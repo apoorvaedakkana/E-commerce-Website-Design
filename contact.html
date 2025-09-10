@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - MyShop</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MyShop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="checkout.html">Cart</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"><h1>PixelCart</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="checkout.html">Cart</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="contact">
-    <div class="container">
-      <h1>Contact Us</h1>
-      <div class="contact-grid">
-        
-        <!-- Info -->
-        <div class="contact-info">
-          <h2>Get in Touch</h2>
-          <p>Email: support@myshop.com</p>
-          <p>Phone: +91 98765 43210</p>
-          <p>Address: 123 Market Street, New Delhi</p>
-        </div>
+    <main>
+        <section class="contact-us">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <div class="contact-info">
+                    <h2>Our Contact Information</h2>
+                    <p>Email: <a href="mailto:aedakkana@gmail.com">info@myshop.com</a></p>
+                    <p>Phone: +1 234 567 8900</p>
+                    <p>Address: 123 E-commerce Street, Shopping City, 12345</p>
+                </div>
+                <div class="contact-form-container">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm">
+                        <label for="contactName">Name:</label>
+                        <input type="text" id="contactName" name="name" required>
+                        <label for="contactEmail">Email:</label>
+                        <input type="email" id="contactEmail" name="email" required>
+                        <label for="contactMessage">Message:</label>
+                        <textarea id="contactMessage" name="message" rows="5" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <!-- Form -->
-        <div class="contact-form">
-          <h2>Send Us a Message</h2>
-          <form id="contactForm">
-            <label>Name</label>
-            <input type="text" id="name" required>
-            <label>Email</label>
-            <input type="email" id="email" required>
-            <label>Message</label>
-            <textarea id="message" required></textarea>
-            <button type="submit" class="btn">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
 
-  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
-  <button onclick="topFunction()" id="scrollBtn">↑</button>
-  <script src="assets/js/form.js"></script>
+    <button onclick="topFunction()" id="scrollBtn">↑</button>
+    <!-- <script src="assets/js/script.js"></script> -->
+    <script src="assets/js/form.js"></script>
 </body>
 </html>

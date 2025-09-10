@@ -1,50 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search - MyShop</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - MyShop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="product.html">Products</a></li>
-        <li><a href="checkout.html">Cart</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"><h1>PixelCart</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="checkout.html">Cart</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="search">
-    <div class="container">
-      <h1>Search Products</h1>
-      <form class="search-bar">
-        <input type="text" placeholder="Search for products...">
-        <button type="submit" class="btn">Search</button>
-      </form>
-
-      <div class="search-results">
-        <div class="product-card">
-          <img src="assets/images/product1.jpg" alt="Smartphone">
-          <h3>Smartphone XYZ</h3><p>$499</p>
-          <a href="product_detail.html" class="btn">View Details</a>
+    <section class="search-page">
+        <div class="container">
+            <h1>Search Results</h1>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for products...">
+            </div>
+            <div id="search-results-list" class="product-list">
+            </div>
         </div>
-        <div class="product-card">
-          <img src="assets/images/product2.jpg" alt="Shoes">
-          <h3>Running Shoes</h3><p>$89</p>
-          <a href="product_detail.html" class="btn">View Details</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
-  <button onclick="topFunction()" id="scrollBtn">↑</button>
-  <script src="assets/js/form.js"></script>
+    <footer>
+        <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
+
+    <button onclick="topFunction()" id="scrollBtn">↑</button>
+    <script src="assets/js/form.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const resultsContainer = document.getElementById('search-results-list');
+
+            function renderSearchResults(query) {
+                resultsContainer.innerHTML = '';
+                const searchTerm = query.toLowerCase().trim();
+
+                let productsToDisplay = PRODUCTS;
+
+                if (searchTerm !== '') {
+                    productsToDisplay = PRODUCTS.filter(product =>
+                        product.name.toLowerCase().includes(searchTerm) ||
+                        product.category.toLowerCase().includes(searchTerm)
+                    );
+                }
+
+                if (productsToDisplay.length === 0) {
+                    resultsContainer.innerHTML = '<p>No products found matching your search.</p>';
+                } else {
+                    productsToDisplay.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <a href="product_detail.html?id=${product.id}">
+                                <img src="${product.imageUrl}" alt="${product.name}">
+                                <h3>${product.name}</h3>
+                                <p>$${product.price.toFixed(2)}</p>
+                                <span class="btn">View Details</span>
+                            </a>
+                        `;
+                        resultsContainer.appendChild(productCard);
+                    });
+                }
+            }
+
+            // Get initial query from URL on page load
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialQuery = urlParams.get('query');
+            if (initialQuery) {
+                searchInput.value = initialQuery;
+                renderSearchResults(initialQuery);
+            } else {
+                renderSearchResults(''); // Show all products if no query in URL
+            }
+
+            // Event listener for real-time search
+            searchInput.addEventListener('input', (event) => {
+                const query = event.target.value;
+                renderSearchResults(query);
+            });
+            
+            // Note: The search button and its click event listener were removed
+            // since the 'input' event handles dynamic rendering.
+        });
+    </script>
 </body>
 </html>

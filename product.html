@@ -1,67 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Products - MyShop</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - MyShop</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"></div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="product.html" class="active">Products</a></li>
-        <li><a href="checkout.html">Cart</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><img src="assets/images/your-logo.png" alt="Logo" height="40"><h1>PixelCart</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="product.html" class="active">Products</a></li>
+                <li>
+                    <a href="checkout.html">Cart</a>
+                    <span id="cart-item-count" class="cart-count">0</span>
+                </li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <input type="text" id="mainSearchInput" placeholder="Search for products...">
+                <button id="mainSearchButton" class="btn">Search</button>
+            </div>
+        </nav>
+    </header>
 
-  <section class="products">
-    <div class="container">
-      <h1>Our Products</h1>
-      <div class="products-layout">
-        
-        <!-- Filters -->
-        <aside class="filters">
-          <h2>Filters</h2>
-          <label>Category</label>
-          <select>
-            <option>All</option>
-            <option>Electronics</option>
-            <option>Fashion</option>
-          </select>
-          <label>Price Range</label>
-          <input type="range" min="0" max="1000" step="50">
-        </aside>
+    <section class="products">
+        <div class="container">
+            <h1>Our Products</h1>
+            <div class="products-layout">
+                <aside class="filters">
+                    <h2>Filters</h2>
+                    
+                    <label for="category-filter">Category</label>
+                    <select id="category-filter">
+                        <option value="All">All</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Home Appliances">Home Appliances</option>
+                    </select>
 
-        <!-- Product List -->
-        <div class="product-list">
-          <div class="product-card">
-            <img src="assets/images/product1.jpg" alt="Product 1">
-            <h3>Smartphone</h3><p>$499</p>
-            <a href="product_detail.html" class="btn">View Details</a>
-          </div>
-          <div class="product-card">
-            <img src="assets/images/product2.jpg" alt="Product 2">
-            <h3>Running Shoes</h3><p>$89</p>
-            <a href="product_detail.html" class="btn">View Details</a>
-          </div>
-          <div class="product-card">
-            <img src="assets/images/product3.jpg" alt="Product 3">
-            <h3>Microwave Oven</h3><p>$150</p>
-            <a href="product_detail.html" class="btn">View Details</a>
-          </div>
+                    <label for="min-price">Price Range</label>
+                    <div class="price-range">
+                        <input type="number" id="min-price" placeholder="Min" min="0">
+                        <span>-</span>
+                        <input type="number" id="max-price" placeholder="Max" min="0">
+                    </div>
+
+                </aside>
+                <div class="product-list" id="product-list"></div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer><p>&copy; 2025 MyShop. All Rights Reserved.</p></footer>
-  <button onclick="topFunction()" id="scrollBtn">↑</button>
-  <script src="assets/js/form.js"></script>
+    <footer>
+        <p>&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
+    <button onclick="topFunction()" id="scrollBtn">↑</button>
+
+    <script src="assets/js/form.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productListContainer = document.getElementById('product-list');
+            const categoryFilter = document.getElementById('category-filter');
+            const minPriceInput = document.getElementById('min-price');
+            const maxPriceInput = document.getElementById('max-price');
+            
+            const mainSearchInput = document.getElementById('mainSearchInput');
+            const mainSearchButton = document.getElementById('mainSearchButton');
+
+            // Function to get a URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlCategory = urlParams.get('category');
+
+            function renderProducts() {
+                const selectedCategory = categoryFilter.value;
+                const minPrice = parseFloat(minPriceInput.value) || 0;
+                const maxPrice = parseFloat(maxPriceInput.value) || Infinity;
+
+                const filteredProducts = PRODUCTS.filter(product => {
+                    const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
+                    const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+                    return matchesCategory && matchesPrice;
+                });
+
+                productListContainer.innerHTML = '';
+                if (filteredProducts.length === 0) {
+                    productListContainer.innerHTML = `<p>No products found with the selected filters.</p>`;
+                } else {
+                    filteredProducts.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>$${product.price.toFixed(2)}</p>
+                            <a href="product_detail.html?id=${product.id}" class="btn">View Details</a>
+                            <button class="add-to-cart-btn" onclick="cart.add(${product.id})">Add to Cart</button>
+                            <div class="add-to-cart-controls">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn decrease-btn" data-id="${product.id}">-</button>
+                                    <span class="quantity-display" id="quantity-display-${product.id}">0</span>
+                                    <button class="quantity-btn increase-btn" data-id="${product.id}">+</button>
+                                </div>
+                                <span id="add-to-cart-message-${product.id}" class="add-to-cart-message"></span>
+                            </div>
+                        `;
+                        productListContainer.appendChild(productCard);
+                    });
+                }
+                updateProductQuantities();
+            }
+            
+            // Check if a category is in the URL and set the filter
+            if (urlCategory) {
+                categoryFilter.value = urlCategory;
+            }
+            // Initial render
+            renderProducts();
+
+            // Add event listeners for when the user manually changes the filter dropdown or price inputs
+            categoryFilter.addEventListener('change', renderProducts);
+            minPriceInput.addEventListener('input', renderProducts);
+            maxPriceInput.addEventListener('input', renderProducts);
+
+            // Handle search button click on the Products page
+            mainSearchButton.addEventListener('click', () => {
+                const query = mainSearchInput.value.trim();
+                if (query) {
+                    window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+                }
+            });
+
+            // Handle Enter key press in the search input
+            mainSearchInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    const query = mainSearchInput.value.trim();
+                    if (query) {
+                        window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
